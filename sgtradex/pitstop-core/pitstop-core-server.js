@@ -73,6 +73,24 @@ app.post('/web-hook/data-elements', async (req, res) => {
     res.json({ message: 'success' })    
 
 })
+const allocateHeavyObjects = () => {
+    const numberOfObjects = 1000000;
+    const objects = [];
+    for (let i = 0; i < numberOfObjects; i++) {
+      objects.push({ index: i, timestamp: Date.now(), random: Math.random() });
+    }
+    return objects;
+
+  };
+  
+app.get('/heavy-process', async (req, res) => {
+    const oj = allocateHeavyObjects();
+    console.log('oj', oj.length)
+    res.json({
+        message: "finished heavy request",
+      })
+})
+
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
   });

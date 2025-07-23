@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.623.0",
+    "@aws-sdk/client-s3": "^3.623.0",
     "http": "^0.0.1-security",
     "pg": "^8.11.5",
     "undici": "^6.5.0"

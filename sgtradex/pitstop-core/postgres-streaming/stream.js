@@ -1,5 +1,4 @@
 import QueryStream from 'pg-query-stream'
-import JSONStream from 'JSONStream'
 import fs, { createReadStream, read } from 'fs'
 import { pipeline } from 'node:stream/promises'
 import pg from 'pg'

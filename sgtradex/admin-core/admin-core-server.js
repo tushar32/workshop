@@ -9,16 +9,34 @@ const dataElementXML = require('./dataElementXML');
 const { insertProducer, updateProducer } = require('./logical-eplication/producer');
 const setupPulisher = require('./logical-eplication/setup-publisher');
 const subscriber = require('./logical-eplication/subscriber');
+const pino = require('pino');
+const { pinoHttp } = require('pino-http');
 
 
 const app = express();
 const port = 3000;
+
+const transport = pino.transport({
+  target: '@serdnam/pino-cloudwatch-transport',
+  options: {
+      logGroupName: 'pino-cloudwatch-test',
+      logStreamName: 'pino-cloudwatch-test-stream',
+      awsRegion: 'ap-southeast-1',
+      interval: 1_000, // this is the default
+  }
+});
+
+const logger = pino(transport);
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cors())
 app.use(resJsonMiddleWare);
+
+
+
+logger.info('Hello, CloudWatch Logs!')
 
 // setupPulisher()
 
@@ -246,7 +264,7 @@ app.post('/get-stream', async (req, res) => {
 // subscriber()
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  logger.info(`Server running at http://localhost:${port}`);
 });
 
 

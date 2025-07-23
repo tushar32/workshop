@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@serdnam/pino-cloudwatch-transport": "^1.0.4",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -20,6 +21,8 @@
     "nodemon": "^3.1.0",
     "pg": "^8.11.5",
     "pg-pool": "^3.6.2",
+    "pino": "^9.3.1",
+    "pino-http": "^10.2.0",
     "postgres": "^3.4.4",
     "react-json-view": "^1.21.3",
     "undici": "^6.18.2",
